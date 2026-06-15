@@ -1,0 +1,51 @@
+{
+  "name": "openclaw-telegram-rich",
+  "version": "0.1.0",
+  "description": "Telegram Bot API 10.1 Rich Message sender for OpenClaw. Real tables, checklists, collapsible details, math, custom emoji.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./builder": "./lib/rich-builder.js",
+    "./sender": "./lib/bot-api.js",
+    "./config": "./lib/config.js"
+  },
+  "bin": {
+    "openclaw-rich-send": "bin/send.js"
+  },
+  "files": [
+    "src",
+    "lib",
+    "bin",
+    "examples",
+    "openclaw.plugin.json",
+    "SKILL.md",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node test.js",
+    "send": "node bin/send.js",
+    "validate": "openclaw plugins validate --entry ./src/index.js --root ."
+  },
+  "keywords": [
+    "openclaw",
+    "telegram",
+    "rich-message",
+    "bot-api-10.1",
+    "telegram-tables",
+    "telegram-checklist"
+  ],
+  "license": "MIT",
+  "author": "Antist <zackwang72@gmail.com>",
+  "dependencies": {
+    "typebox": "^1.2.11"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.6.5"
+  },
+  "openclaw": {
+    "extensions": [
+      "./src/index.js"
+    ]
+  }
+}
