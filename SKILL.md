@@ -1,12 +1,12 @@
----
-name: openclaw-telegram-rich
+﻿---
+name: clawrich
 version: 0.1.0
-description: Send Telegram Rich Messages (Bot API 10.1) — true tables, checklists, collapsible details, math, custom emoji. Bypasses OpenClaw's HTML-only text path.
+description: ClawRich 鈥?Telegram Bot API 10.1 Rich Message sender for OpenClaw. True tables, interactive checklists, collapsible details, math, custom emoji. Bypasses OpenClaw's HTML-only text path.
 author: Antist <zackwang72@gmail.com>
-tags: telegram, bot-api-10.1, rich-message, table, checklist, channel-extension
+tags: clawrich, telegram, bot-api-10.1, rich-message, table, checklist, channel-extension
 ---
 
-# openclaw-telegram-rich
+# ClawRich
 
 > **Telegram Bot API 10.1 (2026-06-11) Rich Message sender for OpenClaw.**
 > The first OpenClaw plugin to support the new `sendRichMessage` method.
@@ -37,18 +37,18 @@ text-only path, so your bot can send **true Telegram-native rich messages** to a
 ## Install
 
 ```bash
-openclaw plugins install clawhub:openclaw-telegram-rich
+openclaw plugins install clawhub:clawrich
 ```
 
 Or from a local path:
 ```bash
-openclaw plugins install --link /path/to/openclaw-telegram-rich
+openclaw plugins install --link /path/to/clawrich
 ```
 
 ## Configure
 
 The plugin reads the bot token from your existing OpenClaw Telegram account
-configuration — **no new credentials needed**. Make sure you have a Telegram
+configuration 鈥?**no new credentials needed**. Make sure you have a Telegram
 account configured:
 
 ```bash
@@ -65,14 +65,14 @@ Call `telegram_rich_send` from any agent that can use OpenClaw tools:
 ```json
 {
   "chat_id": "6462079744",
-  "heading": "📊 Sprint Status",
+  "heading": "馃搳 Sprint Status",
   "summary": "Driver App shipped. Portal QA in progress. Route Optimizer blocked.",
   "table": {
     "columns": ["Task", "Owner", "Status"],
     "rows": [
-      ["Driver App release", "Alex", "✅ Done"],
-      ["Portal QA", "Sam", "🔄 In progress"],
-      ["Route optimizer", "Luke", "🚫 Blocked"]
+      ["Driver App release", "Alex", "鉁?Done"],
+      ["Portal QA", "Sam", "馃攧 In progress"],
+      ["Route optimizer", "Luke", "馃毇 Blocked"]
     ]
   },
   "list": [
@@ -82,7 +82,7 @@ Call `telegram_rich_send` from any agent that can use OpenClaw tools:
   ],
   "details": [
     {
-      "summary": "⚠️ Risks",
+      "summary": "鈿狅笍 Risks",
       "blocks": [
         "QA may slip if staging data is stale.",
         "Route optimizer dependency needs confirmation."
@@ -109,7 +109,7 @@ node bin/send.js --chat_id 6462079744 \
 ### As a Node module
 
 ```js
-import { sendRichMessageFromConfig } from 'openclaw-telegram-rich';
+import { sendRichMessageFromConfig } from 'clawrich';
 
 await sendRichMessageFromConfig({
   chat_id: 6462079744,
@@ -161,7 +161,7 @@ HTML special characters in user input are automatically escaped to prevent injec
 - Total rich message payload: **200 KB** (we hard-cap to be safe)
 - Telegram enforces its own per-block text length limits (4096 chars for most blocks)
 - Checklist interactivity requires the recipient to have **Telegram Premium**
-- Free users see checklist items as static text — tables and details still render
+- Free users see checklist items as static text 鈥?tables and details still render
 
 ## Security
 
@@ -174,7 +174,7 @@ HTML special characters in user input are automatically escaped to prevent injec
 - This plugin calls `sendRichMessage` directly via HTTPS. It does **not** integrate
   with OpenClaw's outbound queue, retry, or rate-limiting layers
 - For high-volume bots, consider implementing your own throttling around the send call
-- Inline buttons (`reply_markup`) are not yet wrapped — use OpenClaw's native `message`
+- Inline buttons (`reply_markup`) are not yet wrapped 鈥?use OpenClaw's native `message`
   tool for inline button replies; this plugin is for the message body only
 
 ## Changelog
@@ -183,7 +183,7 @@ HTML special characters in user input are automatically escaped to prevent injec
 - First release
 - Supports Bot API 10.1 `sendRichMessage`
 - Real tables, checklists, details, quotes, dividers
-- Structured input (heading/summary/table/list/details) → HTML string
+- Structured input (heading/summary/table/list/details) 鈫?HTML string
 - HTML inline parsing: bold, italic, code, link
 - XSS-safe: user input is escaped
 - CLI + Node module + OpenClaw tool entry points
@@ -193,7 +193,7 @@ HTML special characters in user input are automatically escaped to prevent injec
 
 Antist (zackwang72@gmail.com)
 - Telegram: @Buddleja_impiorum
-- OpenClaw workspace: `~/.openclaw/workspace/openclaw-telegram-rich`
+- OpenClaw workspace: `~/.openclaw/workspace/clawrich`
 
 ## License
 

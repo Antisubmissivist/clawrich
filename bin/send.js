@@ -1,6 +1,6 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
- * bin/send.js — CLI entry
+ * bin/send.js 鈥?CLI entry
  *
  * Usage:
  *   node bin/send.js --chat_id 6462079744 --json examples/sprint.json
@@ -48,7 +48,7 @@ function parseArgs(argv) {
 }
 
 function printHelp() {
-  console.log('openclaw-rich-send — send Telegram Rich Message (Bot API 10.1)');
+  console.log('clawrich-send 鈥?send Telegram Rich Message (Bot API 10.1)');
   console.log('');
   console.log('Usage:');
   console.log('  node bin/send.js --chat_id <id> [--json <file>] [--heading <s>] [--summary <s>]');

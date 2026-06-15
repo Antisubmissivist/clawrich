@@ -1,5 +1,5 @@
-/**
- * openclaw-telegram-rich — main entry
+﻿/**
+ * clawrich 鈥?main entry
  *
  * Telegram Bot API 10.1 Rich Message sender for OpenClaw.
  * https://core.telegram.org/bots/api#rich-message-formatting-options
@@ -13,8 +13,8 @@ import { defineToolPlugin } from 'openclaw/plugin-sdk/tool-plugin';
 import { sendRichMessageFromConfig } from '../lib/bot-api.js';
 
 export default defineToolPlugin({
-  id: 'openclaw-telegram-rich',
-  name: 'Telegram Rich Messages (Bot API 10.1)',
+  id: 'clawrich',
+  name: 'ClawRich — Telegram Rich Messages',
   description: 'Send Telegram Rich Messages (true tables, checklists, collapsible details, custom emoji) via Bot API 10.1. The first OpenClaw plugin to support sendRichMessage.',
 
   tools: (tool) => [

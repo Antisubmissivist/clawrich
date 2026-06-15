@@ -1,7 +1,7 @@
 {
-  "name": "openclaw-telegram-rich",
+  "name": "clawrich",
   "version": "0.1.0",
-  "description": "Telegram Bot API 10.1 Rich Message sender for OpenClaw. Real tables, checklists, collapsible details, math, custom emoji.",
+  "description": "ClawRich — Telegram Bot API 10.1 Rich Message sender for OpenClaw. Real tables, interactive checklists, collapsible details, math, custom emoji. Bypasses OpenClaw's HTML-only text path.",
   "type": "module",
   "main": "src/index.js",
   "exports": {
@@ -11,7 +11,7 @@
     "./config": "./lib/config.js"
   },
   "bin": {
-    "openclaw-rich-send": "bin/send.js"
+    "clawrich-send": "bin/send.js"
   },
   "files": [
     "src",
@@ -28,6 +28,7 @@
     "validate": "openclaw plugins validate --entry ./src/index.js --root ."
   },
   "keywords": [
+    "clawrich",
     "openclaw",
     "telegram",
     "rich-message",

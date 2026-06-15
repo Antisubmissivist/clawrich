@@ -1,6 +1,6 @@
 {
-  "id": "openclaw-telegram-rich",
-  "name": "Telegram Rich Messages (Bot API 10.1)",
+  "id": "clawrich",
+  "name": "ClawRich — Telegram Rich Messages",
   "version": "0.1.0",
   "description": "Send Telegram Rich Messages (true tables, checklists, collapsible details, custom emoji) via Bot API 10.1. The first OpenClaw plugin to support sendRichMessage.",
   "author": "Antist <zackwang72@gmail.com>",

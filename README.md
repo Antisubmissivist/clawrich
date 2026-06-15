@@ -1,8 +1,8 @@
-# openclaw-telegram-rich
+﻿# clawrich
 
 > **Telegram Bot API 10.1 (2026-06-11) Rich Message sender for OpenClaw.**
 > Send real tables, interactive checklists, collapsible details, math, and
-> custom emoji to any Telegram chat — without depending on OpenClaw's
+> custom emoji to any Telegram chat 鈥?without depending on OpenClaw's
 > bundled Telegram plugin to add support.
 
 ## Why
@@ -22,14 +22,14 @@ any chat.
 ### From GitHub (recommended)
 
 ```bash
-openclaw plugins install git:https://github.com/Antisubmissivist/openclaw-telegram-rich.git
+openclaw plugins install git:https://github.com/Antisubmissivist/clawrich.git
 ```
 
 ### From a local clone
 
 ```bash
-git clone https://github.com/Antisubmissivist/openclaw-telegram-rich.git
-cd openclaw-telegram-rich
+git clone https://github.com/Antisubmissivist/clawrich.git
+cd clawrich
 npm install
 openclaw plugins install --link .
 ```
@@ -37,7 +37,7 @@ openclaw plugins install --link .
 ## Configure
 
 The plugin reads the bot token from your existing OpenClaw Telegram
-account configuration. **No new credentials are needed** — make sure
+account configuration. **No new credentials are needed** 鈥?make sure
 you have at least one Telegram account configured:
 
 ```bash
@@ -60,14 +60,14 @@ Call `telegram_rich_send` from any agent that can use OpenClaw tools:
 ```json
 {
   "chat_id": "6462079744",
-  "heading": "📊 Sprint Status",
+  "heading": "馃搳 Sprint Status",
   "summary": "Driver App shipped. Portal QA in progress. Route Optimizer blocked.",
   "table": {
     "columns": ["Task", "Owner", "Status"],
     "rows": [
-      ["Driver App release", "Alex", "✅ Done"],
-      ["Portal QA", "Sam", "🔄 In progress"],
-      ["Route optimizer", "Luke", "🚫 Blocked"]
+      ["Driver App release", "Alex", "鉁?Done"],
+      ["Portal QA", "Sam", "馃攧 In progress"],
+      ["Route optimizer", "Luke", "馃毇 Blocked"]
     ]
   },
   "list": [
@@ -77,7 +77,7 @@ Call `telegram_rich_send` from any agent that can use OpenClaw tools:
   ],
   "details": [
     {
-      "summary": "⚠️ Risks",
+      "summary": "鈿狅笍 Risks",
       "blocks": [
         "QA may slip if staging data is stale.",
         "Route optimizer dependency needs confirmation."
@@ -106,7 +106,7 @@ node bin/send.js --chat_id 6462079744 \
 ### As a Node module
 
 ```js
-import { sendRichMessageFromConfig } from 'openclaw-telegram-rich';
+import { sendRichMessageFromConfig } from 'clawrich';
 
 await sendRichMessageFromConfig({
   chat_id: 6462079744,
@@ -120,7 +120,7 @@ await sendRichMessageFromConfig({
 
 | Block | Renders as |
 |-------|-----------|
-| `<h1>` – `<h6>` | Section heading |
+| `<h1>` 鈥?`<h6>` | Section heading |
 | `<p>` | Paragraph with bold / italic / code / link inline |
 | `<table>`, `<tr>`, `<th>`, `<td>` | **Real Telegram table** with header row |
 | `<checklist>` with `<li has_checkbox is_checked>` | **Interactive checkboxes** (Premium users can check them) |
@@ -171,8 +171,7 @@ injection.
 
 - Total rich message payload: **200 KB** (we hard-cap to be safe)
 - Telegram enforces its own per-block text length limits (typically 4096 chars per block)
-- Checklist interactivity requires the recipient to have **Telegram Premium** —
-  free users see static text. Tables and details still render normally.
+- Checklist interactivity requires the recipient to have **Telegram Premium** 鈥?  free users see static text. Tables and details still render normally.
 
 ## Security
 
@@ -185,15 +184,15 @@ injection.
 - This plugin calls `sendRichMessage` directly via HTTPS. It does **not** integrate
   with OpenClaw's outbound queue, retry, or rate-limiting layers.
 - For high-volume bots, consider implementing your own throttling.
-- Inline buttons (`reply_markup`) are not yet wrapped — use OpenClaw's native
+- Inline buttons (`reply_markup`) are not yet wrapped 鈥?use OpenClaw's native
   `message` tool for inline button replies; this plugin is for the message
   body only.
 
 ## Development
 
 ```bash
-git clone https://github.com/Antisubmissivist/openclaw-telegram-rich.git
-cd openclaw-telegram-rich
+git clone https://github.com/Antisubmissivist/clawrich.git
+cd clawrich
 npm install
 npm test                    # 13/13 unit tests
 node bin/send.js --dry-run  # validate payload
@@ -208,4 +207,4 @@ Antist
 
 ## License
 
-MIT — see [LICENSE](LICENSE)
+MIT 鈥?see [LICENSE](LICENSE)
