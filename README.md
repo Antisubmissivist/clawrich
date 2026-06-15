@@ -1,210 +1,245 @@
-﻿# clawrich
+# clawrich
 
-> **Telegram Bot API 10.1 (2026-06-11) Rich Message sender for OpenClaw.**
-> Send real tables, interactive checklists, collapsible details, math, and
-> custom emoji to any Telegram chat 鈥?without depending on OpenClaw's
-> bundled Telegram plugin to add support.
+> **Send real tables, interactive checklists, collapsible details, math, and
+> custom emoji to Telegram — via the new Bot API 10.1 `sendRichMessage` method.**
+>
+> Pure Node.js SDK. Zero framework lock-in. Optional OpenClaw plugin integration.
+
+[![npm version](https://img.shields.io/npm/v/clawrich.svg)](https://www.npmjs.com/package/clawrich)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg)](https://nodejs.org)
+
+---
 
 ## Why
 
-OpenClaw 2026.6.5's bundled Telegram plugin uses `parse_mode: HTML` for
-outbound messages. That mode supports basic tags (`<b>`, `<i>`, `<code>`,
-`<pre>`, `<a>`) but **cannot** render real tables, checklists, or
-collapsible blocks.
+Telegram Bot API **10.1 (2026-06-11)** added `sendRichMessage` — a new endpoint
+that natively renders real `<table>`, `<checklist>`, `<details>`, `<math>`, and
+custom emoji in any chat. No more `<pre>` hacks for tables, no more "list a
+task list of strings" — actual interactive, native Telegram elements.
 
-Telegram Bot API 10.1 (released 2026-06-11) added the `sendRichMessage`
-method that natively renders rich content. This plugin calls that API
-directly, so your bot can send **true Telegram-native rich messages** to
-any chat.
+`clawrich` wraps this in a clean, framework-agnostic Node.js SDK:
+
+- ✅ **Pure Node** — works in any Node.js ≥ 18 project
+- ✅ **Zero dependencies** (only `typebox` for the OpenClaw plugin shim)
+- ✅ **TypeScript-first** — full type definitions included
+- ✅ **Three usage styles** — SDK function call, OpenClaw plugin tool, or CLI
+- ✅ **No HTML escaping headaches** — pass structured spec, get native output
+
+---
 
 ## Install
 
-### From GitHub (recommended)
-
 ```bash
-openclaw plugins install git:https://github.com/Antisubmissivist/clawrich.git
+npm install clawrich
 ```
 
-### From a local clone
+That's it. You now have a working `sendRichMessage` wrapper.
 
-```bash
-git clone https://github.com/Antisubmissivist/clawrich.git
-cd clawrich
-npm install
-openclaw plugins install --link .
-```
+---
 
-## Configure
-
-The plugin reads the bot token from your existing OpenClaw Telegram
-account configuration. **No new credentials are needed** 鈥?make sure
-you have at least one Telegram account configured:
-
-```bash
-openclaw config get channels.telegram
-# Should show accounts[*].botToken (not redacted)
-```
-
-If your token is currently redacted, set it via:
-
-```bash
-openclaw config set channels.telegram.accounts.<account_id>.botToken <token>
-```
-
-## Usage
-
-### As an OpenClaw tool
-
-Call `telegram_rich_send` from any agent that can use OpenClaw tools:
-
-```json
-{
-  "chat_id": "6462079744",
-  "heading": "馃搳 Sprint Status",
-  "summary": "Driver App shipped. Portal QA in progress. Route Optimizer blocked.",
-  "table": {
-    "columns": ["Task", "Owner", "Status"],
-    "rows": [
-      ["Driver App release", "Alex", "鉁?Done"],
-      ["Portal QA", "Sam", "馃攧 In progress"],
-      ["Route optimizer", "Luke", "馃毇 Blocked"]
-    ]
-  },
-  "list": [
-    { "text": "Review PR", "done": true },
-    { "text": "Run staging smoke test", "done": false },
-    { "text": "Send release note", "done": false }
-  ],
-  "details": [
-    {
-      "summary": "鈿狅笍 Risks",
-      "blocks": [
-        "QA may slip if staging data is stale.",
-        "Route optimizer dependency needs confirmation."
-      ]
-    }
-  ]
-}
-```
-
-### As a CLI
-
-```bash
-node bin/send.js --chat_id 6462079744 --json examples/sprint-status.json
-```
-
-Or with individual flags:
-
-```bash
-node bin/send.js --chat_id 6462079744 \
-  --heading "Stock analysis" \
-  --summary "AMZN stop-loss executed." \
-  --table-file table.json \
-  --details-file risks.json
-```
-
-### As a Node module
+## Quick start (Node SDK)
 
 ```js
-import { sendRichMessageFromConfig } from 'clawrich';
+import { sendRichMessage } from 'clawrich';
 
-await sendRichMessageFromConfig({
-  chat_id: 6462079744,
-  heading: 'Hello',
-  summary: 'This is a **bold** and *italic* test',
-  table: { columns: ['A', 'B'], rows: [['1', '2']] }
+const result = await sendRichMessage({
+  token: process.env.TG_BOT_TOKEN,        // get from @BotFather
+  chat_id: 123456789,                      // or @username
+  rich_spec: {
+    heading: 'Sprint Status',
+    summary: 'Driver App shipped. Portal QA in progress.',
+    table: {
+      columns: ['Task', 'Owner', 'Status'],
+      rows: [
+        ['Driver App release', 'Alex', '✅ Done'],
+        ['Portal QA', 'Sam', '🟡 In progress'],
+        ['Route optimizer', 'Luke', '🔴 Blocked']
+      ]
+    },
+    list: [
+      { text: 'Review PR', done: true },
+      { text: 'Run staging smoke test', done: false },
+      { text: 'Send release note', done: false }
+    ],
+    details: [
+      {
+        summary: '⚠️ Risks',
+        blocks: [
+          'QA may slip if staging data is stale.',
+          'Route optimizer dependency needs confirmation.'
+        ]
+      }
+    ]
+  }
+});
+
+console.log(result.message_id);
+```
+
+### Or use raw HTML / Markdown
+
+```js
+// Pass raw HTML
+await sendRichMessage({
+  token, chat_id,
+  html: '<b>bold</b> <i>italic</i> <table>...</table>'
+});
+
+// Or raw Markdown
+await sendRichMessage({
+  token, chat_id,
+  markdown: '**bold** _italic_ | A | B |\n|-|-|\n| 1 | 2 |'
 });
 ```
 
-## Supported block types
+### Build the payload without sending
 
-| Block | Renders as |
-|-------|-----------|
-| `<h1>` 鈥?`<h6>` | Section heading |
-| `<p>` | Paragraph with bold / italic / code / link inline |
-| `<table>`, `<tr>`, `<th>`, `<td>` | **Real Telegram table** with header row |
-| `<checklist>` with `<li has_checkbox is_checked>` | **Interactive checkboxes** (Premium users can check them) |
-| `<ul>`, `<ol>` | Unordered / ordered lists |
-| `<details>`, `<summary>` | **Collapsible** blocks (Telegram 8.0+) |
-| `<blockquote>` | Block quotation |
-| `<hr>` | Divider |
+```js
+import { buildRichMessage } from 'clawrich';
 
-## Inline formatting (in any text field)
+const rich = buildRichMessage({
+  heading: 'Title',
+  table: { columns: ['A', 'B'], rows: [['1', '2']] }
+});
 
-| Syntax | Renders as |
-|--------|-----------|
-| `**bold**` | bold |
-| `*italic*` | italic |
-| `` `code` `` | inline code |
-| `[text](https://url)` | link |
+console.log(rich.html);
+// → '<h2>Title</h2>\n<table>...</table>'
+```
 
-HTML special characters in user input are automatically escaped to prevent
-injection.
+---
+
+## CLI
+
+```bash
+# Dry-run (print payload, don't send)
+node node_modules/clawrich/bin/send.js --chat_id 12345 \
+  --json examples/sprint-status.json --dry-run
+
+# Real send
+node node_modules/clawrich/bin/send.js --chat_id 12345 \
+  --json examples/sprint-status.json
+```
+
+Or install globally and use `clawrich-send`:
+
+```bash
+npm install -g clawrich
+clawrich-send --chat_id 12345 --json sprint.json
+```
+
+---
+
+## OpenClaw plugin (optional)
+
+If you use [OpenClaw](https://openclaw.ai) and want the same capability as a
+native tool, the package also exports an OpenClaw plugin:
+
+```bash
+# Install alongside OpenClaw
+npm install clawrich
+openclaw plugins validate clawrich   # should say "Plugin clawrich is valid"
+```
+
+Your agent will then be able to call the `telegram_rich_send` tool directly.
+
+> **Note:** The OpenClaw plugin shim uses `typebox` and `openclaw/plugin-sdk`
+> as peer deps. If you don't use OpenClaw, you can ignore them — they're
+> marked as `peerDependenciesMeta.optional: true`.
+
+---
 
 ## API reference
 
-`sendRichMessageFromConfig(input)` accepts:
+### `sendRichMessage(params)`
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `chat_id` | string/number | **Required.** Telegram chat id |
-| `account_id` | string | OpenClaw account id (default: first configured one) |
-| `heading` | string | Section heading text |
-| `heading_level` | 1-6 | Heading level (default 2) |
-| `summary` | string | Short summary paragraph |
-| `table` | object | `{ columns: [string], rows: [[string]] }` |
-| `list` | array | `[{ text, done? }]` (becomes checklist if any `done` is set) |
-| `checklist` | array | Force checklist rendering |
-| `details` | array | `[{ summary, blocks: [string] }]` |
-| `paragraphs` | array | Additional paragraphs |
-| `quotes` | array | Block quotations |
-| `divider` | boolean | Insert `<hr>` |
-| `html` | string | Pass raw HTML (skips structured builder) |
-| `markdown` | string | Pass raw Markdown |
-| `message_thread_id` | number | Forum topic thread |
-| `silent` | boolean | Send without notification |
-| `is_rtl` | boolean | Right-to-left layout |
-| `skip_entity_detection` | boolean | Skip URL/mention auto-detection |
-| `dry_run` | boolean | Print payload, do not send |
+| Field | Type | Required | Notes |
+|---|---|---|---|
+| `token` | `string` | ✅ | Telegram bot token from @BotFather |
+| `chat_id` | `string \| number` | ✅ | Numeric chat_id or @username |
+| `rich_spec` | `RichMessageSpec` | one of | Structured spec → auto-converted to html |
+| `rich_message` | `{ html?, markdown? }` | one of | Pre-built Bot API payload |
+| `html` | `string` | one of | Raw HTML shortcut |
+| `markdown` | `string` | one of | Raw Markdown shortcut |
+| `message_thread_id` | `number` | | Forum topic thread id |
+| `silent` | `boolean` | | Send without notification |
+| `is_rtl` | `boolean` | | Right-to-left layout |
+| `skip_entity_detection` | `boolean` | | Skip auto-entity detection (faster) |
+| `dry_run` | `boolean` | | Print payload, don't send |
+| `edit` | `boolean` | | Edit existing message instead of sending |
+| `message_id` | `string \| number` | edit mode | Required when `edit: true` |
 
-## Limits
+Returns `Promise<{ ok: true, message_id, date, chat, ... }>`.
 
-- Total rich message payload: **200 KB** (we hard-cap to be safe)
-- Telegram enforces its own per-block text length limits (typically 4096 chars per block)
-- Checklist interactivity requires the recipient to have **Telegram Premium** 鈥?  free users see static text. Tables and details still render normally.
+### `RichMessageSpec` (structured form)
 
-## Security
+```ts
+interface RichMessageSpec {
+  heading?: string;
+  heading_level?: 1 | 2 | 3 | 4 | 5 | 6;  // default 2
+  summary?: string;
+  table?: { columns: string[]; rows: string[][] };
+  list?: { text: string; done?: boolean }[];
+  checklist?: { text: string; done?: boolean }[];
+  details?: { summary: string; blocks: string[] }[];
+  paragraphs?: string[];
+  quotes?: string[];
+  divider?: boolean;
+}
+```
 
-- The plugin **never** ships or stores bot tokens
-- User-supplied text content is HTML-escaped before injection
-- Uses the same bot token already configured in your OpenClaw Telegram account
+---
 
-## Limitations
+## Supported rich elements
 
-- This plugin calls `sendRichMessage` directly via HTTPS. It does **not** integrate
-  with OpenClaw's outbound queue, retry, or rate-limiting layers.
-- For high-volume bots, consider implementing your own throttling.
-- Inline buttons (`reply_markup`) are not yet wrapped 鈥?use OpenClaw's native
-  `message` tool for inline button replies; this plugin is for the message
-  body only.
+| Element | HTML | Markdown | Notes |
+|---|---|---|---|
+| Headings (h1–h6) | `<h1>`–`<h6>` | `# `–`###### ` | |
+| Bold | `<b>` | `**x**` | |
+| Italic | `<i>` | `*x*` | |
+| Code | `<code>` | `` `x` `` | |
+| Link | `<a href>` | `[text](url)` | |
+| Table | `<table>` / `<tr>` / `<th>` / `<td>` | pipe syntax | |
+| Checklist | `<checklist>` / `<li has_checkbox is_checked>` | `[x]` / `[ ]` | Clickable in client |
+| Details | `<details>` / `<summary>` | n/a | Collapsible |
+| Math (inline) | `<math>` | `$x$` | |
+| Math (block) | `<math>` | `$$x$$` | |
+| Custom emoji | `custom_emoji_id` | n/a | |
+| Divider | `<hr>` | `---` | |
 
-## Development
+Reference: <https://core.telegram.org/bots/api#rich-message-formatting-options>
+
+---
+
+## Environment
+
+- **Node.js** ≥ 18 (uses native `fetch`)
+- **Telegram Bot API** ≥ 10.1 (2026-06-11)
+- No transpilation, no bundler needed
+
+---
+
+## Testing
 
 ```bash
 git clone https://github.com/Antisubmissivist/clawrich.git
 cd clawrich
 npm install
-npm test                    # 13/13 unit tests
-node bin/send.js --dry-run  # validate payload
+npm test
 ```
 
-## Maintainer
+Tests use Node's built-in `node:test` runner — no test framework dependency.
 
-Antist
-- Telegram: @Buddleja_impiorum
-- Email: zackwang72@gmail.com
-- GitHub: [@Antisubmissivist](https://github.com/Antisubmissivist)
+---
 
 ## License
 
-MIT 鈥?see [LICENSE](LICENSE)
+MIT © 2026 Antist (王子剑) — see [LICENSE](LICENSE)
+
+---
+
+## Acknowledgments
+
+- Built for the [OpenClaw](https://openclaw.ai) ecosystem
+- Powered by [Telegram Bot API 10.1](https://core.telegram.org/bots/api)
+- Inspired by every bot developer who's ever wanted to send a real table

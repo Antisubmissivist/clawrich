@@ -22,7 +22,7 @@
  */
 
 import { readFileSync, existsSync } from 'node:fs';
-import { sendRichMessageFromConfig } from '../index.js';
+import { sendRichMessageFromConfig } from '../lib/bot-api.js';
 
 function parseArgs(argv) {
   const args = { _list: [] };

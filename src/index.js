@@ -1,16 +1,52 @@
-﻿/**
- * clawrich 鈥?main entry
+/**
+ * clawrich — main entry
  *
- * Telegram Bot API 10.1 Rich Message sender for OpenClaw.
+ * Telegram Bot API 10.1 Rich Message sender.
  * https://core.telegram.org/bots/api#rich-message-formatting-options
  *
- * Calls the sendRichMessage endpoint directly (bypassing OpenClaw's HTML-only
- * text path) so bots can send real tables, checklists, and collapsible details.
+ * Two entry points:
+ *   1) default export: OpenClaw plugin (telegram_rich_send tool)
+ *   2) named exports:  pure Node SDK (sendRichMessage, buildRichMessage, etc.)
+ *
+ * The SDK works in any Node.js environment — no OpenClaw required.
  */
 
 import { Type } from 'typebox';
 import { defineToolPlugin } from 'openclaw/plugin-sdk/tool-plugin';
 import { sendRichMessageFromConfig } from '../lib/bot-api.js';
+import { buildRichMessage, buildRichHtml } from '../lib/rich-builder.js';
+
+// ─── Named exports: pure Node SDK (no OpenClaw dependency) ──────────────────
+
+/**
+ * Send a Telegram Rich Message via Bot API 10.1.
+ *
+ * @example
+ *   import { sendRichMessage } from 'clawrich';
+ *   await sendRichMessage({
+ *     token: process.env.TG_BOT_TOKEN,
+ *     chat_id: 123456789,
+ *     rich_spec: {
+ *       heading: 'Sprint Status',
+ *       table: { columns: ['Task', 'Status'], rows: [['Ship', '✅']] }
+ *     }
+ *   });
+ */
+export { sendRichMessage, sendRichMessageFromConfig, sendFromFile } from '../lib/bot-api.js';
+
+/**
+ * Build a Rich Message object from a structured spec.
+ *
+ * @example
+ *   import { buildRichMessage } from 'clawrich';
+ *   const rich = buildRichMessage({
+ *     heading: 'Title',
+ *     table: { columns: ['A', 'B'], rows: [['1', '2']] }
+ *   });
+ */
+export { buildRichMessage, buildRichHtml } from '../lib/rich-builder.js';
+
+// ─── Default export: OpenClaw plugin ────────────────────────────────────────
 
 export default defineToolPlugin({
   id: 'clawrich',

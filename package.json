@@ -1,14 +1,27 @@
 {
   "name": "clawrich",
-  "version": "0.1.1",
-  "description": "ClawRich â€?Telegram Bot API 10.1 Rich Message sender for OpenClaw. Real tables, interactive checklists, collapsible details, math, custom emoji. Bypasses OpenClaw's HTML-only text path.",
+  "version": "0.2.0",
+  "description": "Telegram Bot API 10.1 Rich Message SDK for Node.js â€” send real tables, interactive checklists, collapsible details, math, and custom emoji. Zero-dependency, framework-agnostic. Optional OpenClaw plugin integration.",
   "type": "module",
-  "main": "src/index.js",
+  "main": "./src/index.js",
+  "types": "./types/index.d.ts",
   "exports": {
-    ".": "./src/index.js",
-    "./builder": "./lib/rich-builder.js",
-    "./sender": "./lib/bot-api.js",
-    "./config": "./lib/config.js"
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    },
+    "./builder": {
+      "types": "./lib/rich-builder.d.ts",
+      "import": "./lib/rich-builder.js"
+    },
+    "./sender": {
+      "import": "./lib/bot-api.js"
+    },
+    "./config": {
+      "import": "./lib/config.js"
+    },
+    "./package.json": "./package.json"
   },
   "bin": {
     "clawrich-send": "bin/send.js"
@@ -17,25 +30,39 @@
     "src",
     "lib",
     "bin",
+    "types",
     "examples",
     "openclaw.plugin.json",
     "SKILL.md",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
-    "test": "node test.js",
+    "test": "node --test test/",
     "send": "node bin/send.js",
     "validate": "openclaw plugins validate --entry ./src/index.js --root ."
   },
   "keywords": [
-    "clawrich",
-    "openclaw",
     "telegram",
-    "rich-message",
+    "telegram-bot",
+    "bot-api",
     "bot-api-10.1",
+    "rich-message",
+    "rich-messages",
+    "telegram-table",
     "telegram-tables",
-    "telegram-checklist"
+    "telegram-checklist",
+    "telegram-details",
+    "telegram-math",
+    "sendRichMessage",
+    "openclaw",
+    "openclaw-plugin",
+    "telegram-sdk",
+    "telegram-bot-sdk"
   ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "license": "MIT",
   "author": "Antist <zackwang72@gmail.com>",
   "dependencies": {
@@ -44,6 +71,22 @@
   "peerDependencies": {
     "openclaw": ">=2026.6.5"
   },
+  "peerDependenciesMeta": {
+    "openclaw": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "openclaw": ">=2026.6.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antisubmissivist/clawrich.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Antisubmissivist/clawrich/issues"
+  },
+  "homepage": "https://github.com/Antisubmissivist/clawrich#readme",
   "openclaw": {
     "extensions": [
       "./src/index.js"

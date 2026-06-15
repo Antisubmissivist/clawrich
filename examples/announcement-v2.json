@@ -1,0 +1,60 @@
+{
+  "heading": "🚀 我做的 OpenClaw 插件，正式发布了！",
+  "heading_level": 1,
+  "summary": "ClawRich — 第一个把 Telegram Bot API 10.1 富文本能力带进 OpenClaw 的插件。\n真表格、真复选框、真折叠块、数学公式、自定义 emoji — 全部原生。",
+  "table": {
+    "columns": ["原生元素", "终于能做", "意义"],
+    "rows": [
+      ["<table> 真表格", "让数据自己说话", "告别 <pre> 凑数的上古时代"],
+      ["<checklist> 真复选框", "任务可点可勾", "手机端真交互，不是装饰"],
+      ["<details> 真折叠块", "长文干净收起来", "消息不再刷屏"],
+      ["<math> 真数学公式", "e=mc² 内联渲染", "不再发 LaTeX 图片"],
+      ["custom_emoji", "任何 bot 都能用", "打破 Premium 限制"],
+      ["全 rich text", "bold / italic / code / link", "Markdown 该有的都有"]
+    ]
+  },
+  "details": [
+    {
+      "summary": "🛠 它具体能做什么 — 6 个 native 元素全打透",
+      "blocks": [
+        "1) 真表格 — 列对齐、单元格 padding、header 加粗，渲染效果和 Notion 一档",
+        "2) 真复选框 — 对方在 Telegram 客户端直接打勾，回执可追踪",
+        "3) 真折叠块 — 一条消息塞下整篇文档，对方点开才展开",
+        "4) 真数学公式 — 行内 ∑、分数、希腊字母，工程师/科研场景直接用",
+        "5) 自定义 emoji — 给你的 bot 加品牌符号，不再是千篇一律的 Unicode",
+        "6) 完整 rich text — 加粗、斜体、行内代码、超链接，Markdown 体验全保留"
+      ]
+    },
+    {
+      "summary": "📦 30 秒安装 — 一条命令搞定",
+      "blocks": [
+        "openclaw plugins install git:https://github.com/Antisubmissivist/clawrich.git",
+        "前置：OpenClaw 2026.6.5+ + 已配 Telegram bot token",
+        "装完 agent 发 Telegram 自动调真表格，无需额外配置"
+      ]
+    },
+    {
+      "summary": "🔗 资源链接",
+      "blocks": [
+        "📂 GitHub: github.com/Antisubmissivist/clawrich",
+        "📦 ClawHub: clawhub.ai/@Antisubmissivist/clawrich",
+        "📄 Bot API 10.1 spec: core.telegram.org/bots/api#rich-message-formatting-options",
+        "⭐ 欢迎 star / fork / 提 issue"
+      ]
+    }
+  ],
+  "quotes": [
+    "这个插件的发布，标志着我从一个 AI 工具的使用者，正式步入 AI 开发者的行列。",
+    "从此 OpenClaw 不只是我的副驾，它开始搭载我自己造的零件。"
+  ],
+  "list": [
+    { "text": "从今天起，我的 OpenClaw 不再是出厂配置" },
+    { "text": "从今天起，我可以为这个生态添砖加瓦" },
+    { "text": "下一个插件，已经在路上了" }
+  ],
+  "divider": true,
+  "paragraphs": [
+    "**Zack & Kael** — 这是我们合作交出的第一份答卷。",
+    "使用 → 共创 → 贡献 → 拥有，这条路，今天正式走通。⚡"
+  ]
+}
