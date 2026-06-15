@@ -49,10 +49,12 @@
       "./src/index.js"
     ],
     "compat": {
-      "pluginApi": "1"
+      "pluginApi": ">=2026.6.5",
+      "minGatewayVersion": "2026.6.5"
     },
     "build": {
-      "openclawVersion": "2026.6.5"
+      "openclawVersion": "2026.6.5",
+      "pluginSdkVersion": "2026.6.5"
     }
   }
 }
