@@ -1,0 +1,262 @@
+{
+  "generatedAt": "deterministic",
+  "targetOpenClaw": {
+    "configuredPath": null,
+    "status": "disabled",
+    "compatRecords": [],
+    "compatRecordStatuses": {},
+    "hookNames": [],
+    "apiRegistrars": [],
+    "capturedRegistrars": [],
+    "sdkExports": [],
+    "reservedSdkExports": [],
+    "supportedFacadeSdkExports": [],
+    "publicPluginOwnedSdkExports": [],
+    "manifestFields": [],
+    "manifestContractFields": []
+  },
+  "status": "pass",
+  "summary": {
+    "breakageCount": 0,
+    "warningCount": 0,
+    "deprecationWarningCount": 0,
+    "issueCount": 0
+  },
+  "fixtures": [
+    {
+      "id": "clawrich",
+      "name": "ClawRich 閳?Telegram Rich Messages",
+      "priority": "high",
+      "seams": [
+        "dynamic-tool"
+      ],
+      "why": "local OpenClaw plugin root",
+      "status": "ok",
+      "hooks": [],
+      "hookDetails": [],
+      "registrations": [],
+      "registrationDetails": [],
+      "manifestContracts": [
+        "tools"
+      ],
+      "manifestFiles": [
+        "openclaw.plugin.json"
+      ],
+      "sourceFiles": [
+        "bin\\send.js",
+        "examples\\pure-sdk-demo.mjs",
+        "lib\\bot-api.js",
+        "lib\\config.js",
+        "lib\\rich-builder.js",
+        "src\\index.js"
+      ],
+      "pluginManifests": [
+        {
+          "path": "openclaw.plugin.json",
+          "id": "clawrich",
+          "name": "ClawRich 閳?Telegram Rich Messages",
+          "version": "0.2.10",
+          "keys": [
+            "activation",
+            "author",
+            "configSchema",
+            "contracts",
+            "description",
+            "id",
+            "minGatewayVersion",
+            "name",
+            "openclaw",
+            "pluginSdkVersion",
+            "version"
+          ],
+          "contracts": [
+            "tools"
+          ],
+          "providerAuthEnvVars": {},
+          "channelEnvVars": {},
+          "activation": {
+            "onStartup": true
+          }
+        }
+      ],
+      "securityManifests": [],
+      "package": {
+        "path": "package.json",
+        "name": "@antisubmissivist/clawrich",
+        "version": "0.2.10",
+        "type": "module",
+        "main": "./src/index.js",
+        "npmPack": {
+          "advertised": false,
+          "private": false,
+          "filesMode": "allowlist",
+          "files": [
+            "src",
+            "lib",
+            "bin",
+            "types",
+            "examples",
+            "openclaw.plugin.json",
+            "SKILL.md",
+            "README.md",
+            "LICENSE"
+          ],
+          "invalidFileSpecs": []
+        },
+        "dependencies": [
+          "typebox"
+        ],
+        "peerDependencies": [
+          "openclaw"
+        ],
+        "optionalDependencies": [],
+        "openclaw": {
+          "extensions": [
+            "./src/index.js"
+          ],
+          "runtimeExtensions": [],
+          "setupEntry": null,
+          "compatPluginApi": ">=2026.6.5",
+          "buildOpenClawVersion": "2026.6.5",
+          "buildPluginSdkVersion": "2026.6.5",
+          "install": null,
+          "release": null,
+          "unsupportedMetadata": [],
+          "entrypoints": [
+            {
+              "kind": "extension",
+              "specifier": "./src/index.js",
+              "relativePath": "src\\index.js",
+              "exists": true,
+              "requiresBuild": false
+            }
+          ]
+        }
+      },
+      "packages": [
+        {
+          "path": "package.json",
+          "name": "@antisubmissivist/clawrich",
+          "version": "0.2.10",
+          "type": "module",
+          "main": "./src/index.js",
+          "npmPack": {
+            "advertised": false,
+            "private": false,
+            "filesMode": "allowlist",
+            "files": [
+              "src",
+              "lib",
+              "bin",
+              "types",
+              "examples",
+              "openclaw.plugin.json",
+              "SKILL.md",
+              "README.md",
+              "LICENSE"
+            ],
+            "invalidFileSpecs": []
+          },
+          "dependencies": [
+            "typebox"
+          ],
+          "peerDependencies": [
+            "openclaw"
+          ],
+          "optionalDependencies": [],
+          "openclaw": {
+            "extensions": [
+              "./src/index.js"
+            ],
+            "runtimeExtensions": [],
+            "setupEntry": null,
+            "compatPluginApi": ">=2026.6.5",
+            "buildOpenClawVersion": "2026.6.5",
+            "buildPluginSdkVersion": "2026.6.5",
+            "install": null,
+            "release": null,
+            "unsupportedMetadata": [],
+            "entrypoints": [
+              {
+                "kind": "extension",
+                "specifier": "./src/index.js",
+                "relativePath": "src\\index.js",
+                "exists": true,
+                "requiresBuild": false
+              }
+            ]
+          }
+        }
+      ],
+      "sdkImports": [
+        "openclaw/plugin-sdk/tool-plugin"
+      ],
+      "sdkImportDetails": [
+        {
+          "specifier": "openclaw/plugin-sdk/tool-plugin",
+          "file": "src\\index.js",
+          "line": 15,
+          "ref": "src\\index.js:15"
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "contractProbes": [],
+  "logs": [
+    {
+      "fixture": "clawrich",
+      "code": "seam-inventory",
+      "level": "log",
+      "message": "observed 0 hooks, 0 registrations, and 1 manifest contracts",
+      "evidence": [
+        "manifestContract:tools"
+      ]
+    },
+    {
+      "fixture": "clawrich",
+      "code": "package-metadata",
+      "level": "log",
+      "message": "selected package metadata for plugin contract checks",
+      "evidence": [
+        "package.json",
+        "@antisubmissivist/clawrich",
+        "version:0.2.10"
+      ]
+    },
+    {
+      "fixture": "clawrich",
+      "code": "declarative-contracts",
+      "level": "log",
+      "message": "fixture declares manifest contracts that can be checked without executing plugin code",
+      "evidence": [
+        "tools"
+      ]
+    },
+    {
+      "fixture": "openclaw",
+      "code": "target-openclaw-unavailable",
+      "level": "log",
+      "message": "target OpenClaw checkout was not available, so compat record coverage was not checked",
+      "evidence": [
+        "not configured"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "fixture": "clawrich",
+      "decision": "inspector-follow-up",
+      "seam": "cold-import",
+      "action": "Install runtime dependencies in an isolated workspace before executing this fixture entrypoint.",
+      "evidence": "typebox"
+    },
+    {
+      "fixture": "clawrich",
+      "decision": "no-action",
+      "seam": "manifest-contract",
+      "action": "Keep checking this declarative contract in default offline CI.",
+      "evidence": "tools"
+    }
+  ]
+}

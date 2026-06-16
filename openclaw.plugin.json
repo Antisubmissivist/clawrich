@@ -1,4 +1,4 @@
-﻿{
+{
   "id": "clawrich",
   "name": "ClawRich 閳?Telegram Rich Messages",
   "version": "0.2.10",
@@ -16,8 +16,15 @@
     "tools": [
       "telegram_rich_send"
     ]
-  }
+  },
+  "openclaw": {
+    "compat": {
+      "pluginApi": ">=2026.6.5"
+    },
+    "build": {
+      "openclawVersion": "2026.6.5"
+    }
+  },
+  "pluginSdkVersion": "2026.6.5",
+  "minGatewayVersion": "2026.6.5"
 }
-
-
-
