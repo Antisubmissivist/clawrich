@@ -1,4 +1,4 @@
-﻿---
+---
 name: clawrich
 version: 0.1.1
 description: ClawRich 鈥?Telegram Bot API 10.1 Rich Message sender for OpenClaw. True tables, interactive checklists, collapsible details, math, custom emoji. Bypasses OpenClaw's HTML-only text path.

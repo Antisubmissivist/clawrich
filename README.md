@@ -1,4 +1,4 @@
-﻿# @antisubmissivist/clawrich
+# @antisubmissivist/clawrich
 
 > **Send real tables, interactive checklists, collapsible details, math, and
 > custom emoji to Telegram 鈥?via the new Bot API 10.1 `sendRichMessage` method.**
