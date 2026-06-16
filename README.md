@@ -1,13 +1,29 @@
-# clawrich
+# @antisubmissivist/clawrich
 
 > **Send real tables, interactive checklists, collapsible details, math, and
 > custom emoji to Telegram — via the new Bot API 10.1 `sendRichMessage` method.**
 >
 > Pure Node.js SDK. Zero framework lock-in. Optional OpenClaw plugin integration.
 
-[![npm version](https://img.shields.io/npm/v/clawrich.svg)](https://www.npmjs.com/package/clawrich)
+[![npm version](https://img.shields.io/npm/v/@antisubmissivist/clawrich.svg)](https://www.npmjs.com/package/@antisubmissivist/clawrich)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg)](https://nodejs.org)
+
+---
+
+## Which install is right for me?
+
+Three install paths for three audiences — pick the one that matches you:
+
+| You are… | Install command | You get |
+|---|---|---|
+| 🅰️ **An OpenClaw user** (you already run `openclaw message send`) | `openclaw plugins install clawhub:clawrich` | A new `telegram_rich_send` tool your agent can call |
+| 🅱️ **A Node.js developer** (you want to import a library) | `npm install @antisubmissivist/clawrich` | A pure-Node SDK with TypeScript types |
+| 🅲️ **A contributor / hacker** (you want to read or fork the code) | `git clone https://github.com/Antisubmissivist/clawrich.git` | Full source, build, and test suite |
+
+> 💡 **Same code, three doors.** The npm tarball and the ClawHub plugin share
+> the same `src/` and `lib/` — the npm one is the SDK, the ClawHub one wires
+> it as an OpenClaw tool. You don't need both.
 
 ---
 
@@ -28,10 +44,10 @@ task list of strings" — actual interactive, native Telegram elements.
 
 ---
 
-## Install
+## Install (Node SDK)
 
 ```bash
-npm install clawrich
+npm install @antisubmissivist/clawrich
 ```
 
 That's it. You now have a working `sendRichMessage` wrapper.
