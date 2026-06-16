@@ -1,6 +1,6 @@
 ﻿{
   "name": "@antisubmissivist/clawrich",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Telegram Bot API 10.1 Rich Message SDK for Node.js 鈥?send real tables, interactive checklists, collapsible details, math, and custom emoji. Zero-dependency, framework-agnostic. Optional OpenClaw plugin integration.",
   "type": "module",
   "main": "./src/index.js",
@@ -101,6 +101,7 @@
     }
   }
 }
+
 
 
 
