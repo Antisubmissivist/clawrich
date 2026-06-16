@@ -1,7 +1,7 @@
-{
+﻿{
   "name": "@antisubmissivist/clawrich",
-  "version": "0.2.4",
-  "description": "Telegram Bot API 10.1 Rich Message SDK for Node.js — send real tables, interactive checklists, collapsible details, math, and custom emoji. Zero-dependency, framework-agnostic. Optional OpenClaw plugin integration.",
+  "version": "0.2.5",
+  "description": "Telegram Bot API 10.1 Rich Message SDK for Node.js 鈥?send real tables, interactive checklists, collapsible details, math, and custom emoji. Zero-dependency, framework-agnostic. Optional OpenClaw plugin integration.",
   "type": "module",
   "main": "./src/index.js",
   "types": "./types/index.d.ts",
@@ -64,7 +64,7 @@
     "node": ">=18.0.0"
   },
   "license": "MIT",
-  "author": "Antist <zackwang72@gmail.com>",
+  "author": "Antisubmissivist <Antisubmissivist@gmail.com>",
   "dependencies": {
     "typebox": "^1.2.11"
   },
@@ -101,3 +101,5 @@
     }
   }
 }
+
+

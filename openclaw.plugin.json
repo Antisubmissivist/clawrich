@@ -1,9 +1,9 @@
-{
+﻿{
   "id": "clawrich",
-  "name": "ClawRich — Telegram Rich Messages",
+  "name": "ClawRich 鈥?Telegram Rich Messages",
   "version": "0.2.4",
   "description": "Send Telegram Rich Messages (true tables, checklists, collapsible details, custom emoji) via Bot API 10.1. The first OpenClaw plugin to support sendRichMessage.",
-  "author": "Antist <zackwang72@gmail.com>",
+  "author": "Antisubmissivist <Antisubmissivist@gmail.com>",
   "configSchema": {
     "type": "object",
     "properties": {},
@@ -18,3 +18,4 @@
     ]
   }
 }
+

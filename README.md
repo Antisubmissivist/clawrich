@@ -1,7 +1,7 @@
-# @antisubmissivist/clawrich
+﻿# @antisubmissivist/clawrich
 
 > **Send real tables, interactive checklists, collapsible details, math, and
-> custom emoji to Telegram — via the new Bot API 10.1 `sendRichMessage` method.**
+> custom emoji to Telegram 鈥?via the new Bot API 10.1 `sendRichMessage` method.**
 >
 > Pure Node.js SDK. Zero framework lock-in. Optional OpenClaw plugin integration.
 
@@ -13,34 +13,34 @@
 
 ## Which install is right for me?
 
-Three install paths for three audiences — pick the one that matches you:
+Three install paths for three audiences 鈥?pick the one that matches you:
 
-| You are… | Install command | You get |
+| You are鈥?| Install command | You get |
 |---|---|---|
-| 🅰️ **An OpenClaw user** (you already run `openclaw message send`) | `openclaw plugins install clawhub:clawrich` | A new `telegram_rich_send` tool your agent can call |
-| 🅱️ **A Node.js developer** (you want to import a library) | `npm install @antisubmissivist/clawrich` | A pure-Node SDK with TypeScript types |
-| 🅲️ **A contributor / hacker** (you want to read or fork the code) | `git clone https://github.com/Antisubmissivist/clawrich.git` | Full source, build, and test suite |
+| 馃叞锔?**An OpenClaw user** (you already run `openclaw message send`) | `openclaw plugins install clawhub:clawrich` | A new `telegram_rich_send` tool your agent can call |
+| 馃叡锔?**A Node.js developer** (you want to import a library) | `npm install @antisubmissivist/clawrich` | A pure-Node SDK with TypeScript types |
+| 馃叢锔?**A contributor / hacker** (you want to read or fork the code) | `git clone https://github.com/Antisubmissivist/clawrich.git` | Full source, build, and test suite |
 
-> 💡 **Same code, three doors.** The npm tarball and the ClawHub plugin share
-> the same `src/` and `lib/` — the npm one is the SDK, the ClawHub one wires
+> 馃挕 **Same code, three doors.** The npm tarball and the ClawHub plugin share
+> the same `src/` and `lib/` 鈥?the npm one is the SDK, the ClawHub one wires
 > it as an OpenClaw tool. You don't need both.
 
 ---
 
 ## Why
 
-Telegram Bot API **10.1 (2026-06-11)** added `sendRichMessage` — a new endpoint
+Telegram Bot API **10.1 (2026-06-11)** added `sendRichMessage` 鈥?a new endpoint
 that natively renders real `<table>`, `<checklist>`, `<details>`, `<math>`, and
 custom emoji in any chat. No more `<pre>` hacks for tables, no more "list a
-task list of strings" — actual interactive, native Telegram elements.
+task list of strings" 鈥?actual interactive, native Telegram elements.
 
 `clawrich` wraps this in a clean, framework-agnostic Node.js SDK:
 
-- ✅ **Pure Node** — works in any Node.js ≥ 18 project
-- ✅ **Zero dependencies** (only `typebox` for the OpenClaw plugin shim)
-- ✅ **TypeScript-first** — full type definitions included
-- ✅ **Three usage styles** — SDK function call, OpenClaw plugin tool, or CLI
-- ✅ **No HTML escaping headaches** — pass structured spec, get native output
+- 鉁?**Pure Node** 鈥?works in any Node.js 鈮?18 project
+- 鉁?**Zero dependencies** (only `typebox` for the OpenClaw plugin shim)
+- 鉁?**TypeScript-first** 鈥?full type definitions included
+- 鉁?**Three usage styles** 鈥?SDK function call, OpenClaw plugin tool, or CLI
+- 鉁?**No HTML escaping headaches** 鈥?pass structured spec, get native output
 
 ---
 
@@ -68,9 +68,9 @@ const result = await sendRichMessage({
     table: {
       columns: ['Task', 'Owner', 'Status'],
       rows: [
-        ['Driver App release', 'Alex', '✅ Done'],
-        ['Portal QA', 'Sam', '🟡 In progress'],
-        ['Route optimizer', 'Luke', '🔴 Blocked']
+        ['Driver App release', 'Alex', '鉁?Done'],
+        ['Portal QA', 'Sam', '馃煛 In progress'],
+        ['Route optimizer', 'Luke', '馃敶 Blocked']
       ]
     },
     list: [
@@ -80,7 +80,7 @@ const result = await sendRichMessage({
     ],
     details: [
       {
-        summary: '⚠️ Risks',
+        summary: '鈿狅笍 Risks',
         blocks: [
           'QA may slip if staging data is stale.',
           'Route optimizer dependency needs confirmation.'
@@ -120,7 +120,7 @@ const rich = buildRichMessage({
 });
 
 console.log(rich.html);
-// → '<h2>Title</h2>\n<table>...</table>'
+// 鈫?'<h2>Title</h2>\n<table>...</table>'
 ```
 
 ---
@@ -160,7 +160,7 @@ openclaw plugins validate clawrich   # should say "Plugin clawrich is valid"
 Your agent will then be able to call the `telegram_rich_send` tool directly.
 
 > **Note:** The OpenClaw plugin shim uses `typebox` and `openclaw/plugin-sdk`
-> as peer deps. If you don't use OpenClaw, you can ignore them — they're
+> as peer deps. If you don't use OpenClaw, you can ignore them 鈥?they're
 > marked as `peerDependenciesMeta.optional: true`.
 
 ---
@@ -171,9 +171,9 @@ Your agent will then be able to call the `telegram_rich_send` tool directly.
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
-| `token` | `string` | ✅ | Telegram bot token from @BotFather |
-| `chat_id` | `string \| number` | ✅ | Numeric chat_id or @username |
-| `rich_spec` | `RichMessageSpec` | one of | Structured spec → auto-converted to html |
+| `token` | `string` | 鉁?| Telegram bot token from @BotFather |
+| `chat_id` | `string \| number` | 鉁?| Numeric chat_id or @username |
+| `rich_spec` | `RichMessageSpec` | one of | Structured spec 鈫?auto-converted to html |
 | `rich_message` | `{ html?, markdown? }` | one of | Pre-built Bot API payload |
 | `html` | `string` | one of | Raw HTML shortcut |
 | `markdown` | `string` | one of | Raw Markdown shortcut |
@@ -210,7 +210,7 @@ interface RichMessageSpec {
 
 | Element | HTML | Markdown | Notes |
 |---|---|---|---|
-| Headings (h1–h6) | `<h1>`–`<h6>` | `# `–`###### ` | |
+| Headings (h1鈥揾6) | `<h1>`鈥揱<h6>` | `# `鈥揱###### ` | |
 | Bold | `<b>` | `**x**` | |
 | Italic | `<i>` | `*x*` | |
 | Code | `<code>` | `` `x` `` | |
@@ -229,8 +229,8 @@ Reference: <https://core.telegram.org/bots/api#rich-message-formatting-options>
 
 ## Environment
 
-- **Node.js** ≥ 18 (uses native `fetch`)
-- **Telegram Bot API** ≥ 10.1 (2026-06-11)
+- **Node.js** 鈮?18 (uses native `fetch`)
+- **Telegram Bot API** 鈮?10.1 (2026-06-11)
 - No transpilation, no bundler needed
 
 ---
@@ -244,13 +244,13 @@ npm install
 npm test
 ```
 
-Tests use Node's built-in `node:test` runner — no test framework dependency.
+Tests use Node's built-in `node:test` runner 鈥?no test framework dependency.
 
 ---
 
 ## License
 
-MIT © 2026 Antist (王子剑) — see [LICENSE](LICENSE)
+MIT 漏 2026 Antisubmissivist 鈥\?see [LICENSE](LICENSE)
 
 ---
 
@@ -259,3 +259,4 @@ MIT © 2026 Antist (王子剑) — see [LICENSE](LICENSE)
 - Built for the [OpenClaw](https://openclaw.ai) ecosystem
 - Powered by [Telegram Bot API 10.1](https://core.telegram.org/bots/api)
 - Inspired by every bot developer who's ever wanted to send a real table
+
