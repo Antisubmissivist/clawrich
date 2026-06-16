@@ -1,0 +1,43 @@
+{
+  "heading": "🚀 Kael 系统 Sprint Status · Week of Jun 15, 2026",
+  "summary": "本周触发 3 支止损离场（META/MP/AMZN），修复 Node 配对流程，确认 Gmail 摘要恢复正常。剩 3 件事要收尾，1 个决策点（DUOL 是否分批止盈）。",
+  "table": {
+    "columns": ["Item", "Owner", "Status"],
+    "rows": [
+      ["Gmail digest 恢复", "Kael (cron)", "✅ Done"],
+      ["股票每日分析 cron", "Kael (cron)", "✅ Done (Jun 15 14:45)"],
+      ["META 止损触发", "Kael", "✅ Done (-14.5%)"],
+      ["MP 止损触发", "Kael", "✅ Done (-22.7%)"],
+      ["AMZN 止损触发", "Kael", "✅ Done (+9.3%)"],
+      ["Node 配对批准 (设备 793df973)", "Kael", "✅ Done"],
+      ["官方文档调研 (cron 开关 + HTML)", "Kael", "✅ Done"],
+      ["Telegram Rich Message 插件 (现在！)", "Kael", "🛠 In progress"],
+      ["Hub Tray 重连", "Lykos", "⏳ 需手动点 Reconnect"]
+    ]
+  },
+  "list": [
+    { "text": "Review PR (Telegram Rich plugin code)", "done": true },
+    { "text": "Run staging smoke test (send Rich Message end-to-end)", "done": false },
+    { "text": "Send release note to Lykos", "done": false },
+    { "text": "Decision: DUOL 分批止盈?", "done": false }
+  ],
+  "details": [
+    {
+      "summary": "⚠️ Risks",
+      "blocks": [
+        "OpenClaw 当前版本 (2026.6.5) 不支持 Telegram Bot API 10.1 Rich Messages，插件通过直发 API 绕过",
+        "DUOL 距止盈 $133.17 还差 $10.5，市场若回调可能错失",
+        "Hub Tray 重连需 Lykos 手动操作，今日必做"
+      ]
+    },
+    {
+      "summary": "📊 持仓关键数据",
+      "blocks": [
+        "NVDA 50股 @ $205.10 (+13.9%) — 唯一盈利主力",
+        "AMZN 已止损离场 (+9.3%) — 锁定利润",
+        "MP 已止损离场 (-22.7%) — 认赔",
+        "DUOL @ $122.63 (+12.5%) — 接近止盈 $133.17"
+      ]
+    }
+  ]
+}

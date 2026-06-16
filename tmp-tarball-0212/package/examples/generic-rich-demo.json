@@ -1,0 +1,70 @@
+{
+  "heading": "ClawRich v0.1.1 — Bot API 10.1 Feature Showcase",
+  "heading_level": 2,
+  "summary": "A generic, privacy-safe demo of every Rich Message element supported by the new Telegram Bot API. No personal data, no real numbers, no real names — just a clean visual tour.",
+  "table": {
+    "columns": ["Feature", "Bot API 10.1 element", "Before (HTML only)", "After (ClawRich)"],
+    "rows": [
+      ["Real table", "<table>", "raw <pre> hack", "✅ native render"],
+      ["Interactive checklist", "<checklist>", "not possible", "✅ clickable"],
+      ["Collapsible details", "<details>", "not possible", "✅ native"],
+      ["Math formulas", "<math>", "LaTeX image only", "✅ inline math"],
+      ["Custom emoji", "custom_emoji_id", "premium-only", "✅ any bot"],
+      ["Rich text", "<b><i><code>", "limited tags", "✅ full markdown"]
+    ]
+  },
+  "checklist": [
+    { "text": "Plugin installed and loaded (openclaw plugins list)", "done": true },
+    { "text": "Telegram Bot API 10.1 sendRichMessage endpoint callable", "done": true },
+    { "text": "End-to-end test message delivered (message_id 10298)", "done": true },
+    { "text": "ClawHub moderation scan", "done": false },
+    { "text": "Public release announcement on kaelblog.com", "done": false }
+  ],
+  "details": [
+    {
+      "summary": "📦 Installation (3 paths)",
+      "blocks": [
+        "🅰️ GitHub direct (works now, no review needed):",
+        "openclaw plugins install git:https://github.com/Antisubmissivist/clawrich.git",
+        "🅱️ ClawHub registry (works after scan passes):",
+        "openclaw plugins install clawhub:clawrich",
+        "🅲️ Local dev link:",
+        "openclaw plugins install --link ."
+      ]
+    },
+    {
+      "summary": "🛠 Project facts",
+      "blocks": [
+        "Repo: github.com/Antisubmissivist/clawrich",
+        "Package: clawrich@0.1.1",
+        "License: MIT",
+        "Type: openclaw code-plugin (tool: telegram_rich_send)",
+        "First OpenClaw plugin to expose sendRichMessage"
+      ]
+    },
+    {
+      "summary": "📐 How Rich Messages are constructed",
+      "blocks": [
+        "1. CLI flag → JSON file → builder.js",
+        "2. builder.js emits Markdown string",
+        "3. Markdown is POSTed to sendRichMessage",
+        "4. Telegram parses the Markdown into native elements",
+        "5. Native render beats any HTML hack"
+      ]
+    }
+  ],
+  "quotes": [
+    "Tables are the most requested feature for Telegram bots — and now they actually exist.",
+    "This is the first OpenClaw plugin to expose sendRichMessage."
+  ],
+  "list": [
+    { "text": "Bold headers, italic emphasis, inline code — all supported" },
+    { "text": "Nested details blocks for long-form content" },
+    { "text": "Math: e = mc² or ∑(n=1 to ∞) 1/n² = π²/6" }
+  ],
+  "divider": true,
+  "paragraphs": [
+    "This message is a **generic** showcase — no personal data, no live prices, no portfolio numbers, no addresses, no API keys. Pure feature demo.",
+    "If you can read this nicely formatted table on your phone, then the plugin is working end-to-end: plugin → OpenClaw → Telegram Bot API 10.1 → render."
+  ]
+}

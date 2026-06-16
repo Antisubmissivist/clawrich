@@ -1,0 +1,34 @@
+{
+  "heading": "🎉 我做的 OpenClaw 插件发布了",
+  "heading_level": 1,
+  "summary": "ClawRich — 让 OpenClaw 真正用上 Telegram 富文本",
+  "table": {
+    "columns": ["元素", "效果"],
+    "rows": [
+      ["真表格", "原生 <table>，告别 <pre> 凑数"],
+      ["真复选框", "客户端可点击 checklist"],
+      ["真折叠块", "<details>/<summary> 折叠长文"],
+      ["数学公式", "内联 <math>，不再发图片"],
+      ["自定义 emoji", "任何 bot 都能用"]
+    ]
+  },
+  "details": [
+    {
+      "summary": "📦 怎么安装",
+      "blocks": [
+        "openclaw plugins install git:https://github.com/Antisubmissivist/clawrich.git",
+        "装完就能用，agent 发 Telegram 时自动调真表格。"
+      ]
+    },
+    {
+      "summary": "🔗 链接",
+      "blocks": [
+        "GitHub: github.com/Antisubmissivist/clawrich",
+        "ClawHub: clawhub.ai/@Antisubmissivist/clawrich"
+      ]
+    }
+  ],
+  "quotes": [
+    "做这个插件标志着我从一个 AI 工具的使用者，正式步入 AI 开发者的行列。"
+  ]
+}
